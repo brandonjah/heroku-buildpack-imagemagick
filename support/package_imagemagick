@@ -29,30 +29,30 @@ cd $tempdir
 
 im_local_path=$tempdir/imagemagick-${IMAGE_MAGICK_VERSION}.tgz
 
-libpng_local_path=$tempdir/libpng-${LIBPNG_VERSION}.tgz
+# libpng_local_path=$tempdir/libpng-${LIBPNG_VERSION}.tgz
 
-echo ">>> Downloading libpng sources"
+# echo ">>> Downloading libpng sources"
 
-libpng_sources=$tempdir/libpng-${LIBPNG_VERSION}.tar.gz
-curl ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-${LIBPNG_VERSION}.tar.gz > $libpng_sources
+# libpng_sources=$tempdir/libpng-${LIBPNG_VERSION}.tar.gz
+# curl ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-${LIBPNG_VERSION}.tar.gz > $libpng_sources
 
-tar -C $tempdir -x -z -f $libpng_sources
+# tar -C $tempdir -x -z -f $libpng_sources
 
-echo ">>> Building libpng"
+# echo ">>> Building libpng"
 
-# build and package libpng for heroku
-vulcan build -v \
-  -s $tempdir/libpng-${LIBPNG_VERSION} \
-  -n libpng\
-  -o $libpng_local_path
+# # build and package libpng for heroku
+# vulcan build -v \
+#   -s $tempdir/libpng-${LIBPNG_VERSION} \
+#   -n libpng\
+#   -o $libpng_local_path
 
 # -c "cd libpng-${LIBPNG_VERSION} && ./configure --prefix=/app/vendor/libpng && make install" \
 
-echo ">>> Uploading libpng artifact"
-echo "    to ${S3_BUCKET}/${LIBPNG_REMOTE_PATH}"
-echo "    from ${libpng_local_path}"
+# echo ">>> Uploading libpng artifact"
+# echo "    to ${S3_BUCKET}/${LIBPNG_REMOTE_PATH}"
+# echo "    from ${libpng_local_path}"
 
-$basedir/aws/s3 put $S3_BUCKET $LIBPNG_REMOTE_PATH $libpng_local_path
+# $basedir/aws/s3 put $S3_BUCKET $LIBPNG_REMOTE_PATH $libpng_local_path
 
 echo ">>> Building imagemagick"
 
