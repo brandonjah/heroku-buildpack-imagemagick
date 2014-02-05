@@ -4,12 +4,12 @@ set -e
 
 source `dirname $0`/../configs.sh
 
-if [ "$AWS_ID" == "" ]; then
+if [ "$AWS_ACCESS_KEY" == "" ]; then
   echo "must set AWS_ID"
   exit 1
 fi
 
-if [ "$AWS_SECRET" == "" ]; then
+if [ "$AWS_SECRET_KEY" == "" ]; then
   echo "must set AWS_SECRET"
   exit 1
 fi
